@@ -1,0 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="addNewDirectionModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-type-dialog" dir="<?php echo $_SESSION['systemLang'] == 'ar' ? 'rtl' : 'ltr' ?>">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="m-auto modal-title h5 " id="staticBackdropLabel"><?php echo language("ADD NEW DIRECTION", $_SESSION['systemLang']) ?></h5>
+            </div>
+            <div class="modal-body">
+                <!-- start add new user form -->
+                <form action="directions.php?do=insertDir" method="POST" id="addNewDirection">
+                    <!-- start direction name field -->
+                    <div class="mb-sm-2 mb-md-3 row">
+                        <label for="direction-name" class="col-sm-12 col-md-4 col-form-label text-capitalize" ><?php echo language('DIRECTION NAME', $_SESSION['systemLang']) ?></label>
+                        <div class="col-sm-12 col-md-8">
+                            <input type="text" class="form-control" name="direction-name" id="direction-name" placeholder="<?php echo language('DIRECTION NAME', $_SESSION['systemLang']) ?>" required>
+                            <div id="passHelp" class="form-text"><?php echo language('MAKE SURE YOU ENTER THE FULL NAME OF THE DIRECTION', $_SESSION['systemLang']) ?></div>
+                        </div>
+                    </div>
+                    <!-- end direction name field -->
+                    <!-- start direction ip field -->
+                    <div class="mb-sm-2 mb-md-3 row">
+                        <label for="direction-ip" class="col-sm-12 col-md-4 col-form-label text-capitalize"><?php echo language('THE DIRECTION', $_SESSION['systemLang']) ?>&nbsp;<span class="text-uppercase">ip</span></label>
+                        <div class="col-sm-12 col-md-8">
+                            <input type="text" class="form-control" name="direction-ip" id="direction-ip" onkeyup="validateIPaddress(this)" placeholder="" autocomplete="off" required>
+                            <div id="passHelp" class="form-text"><?php echo language('IP MUST BE IN FORMATE OF XXX.XXX.XXX.XXX', $_SESSION['systemLang']) ?></div>
+                        </div>
+                    </div>
+                    <!-- end direction ip field -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary py-1 px-5 fs-12" form="addNewDirection" onclick="validateForm(this.form)"><?php echo language("ADD", $_SESSION['systemLang']) ?></button>
+                <button type="button" class="btn btn-outline-secondary py-1 px-3 fs-12" data-bs-dismiss="modal"><?php echo language("CLOSE", $_SESSION['systemLang']) ?></button>
+            </div>
+        </div>
+    </div>
+</div>
